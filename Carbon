@@ -1,0 +1,61 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+
+public class Carbon: MonoBehaviour {
+	public string elemType = "Carbon";
+	//public element[] bondedElements;
+	public int openBonds = 4;
+	public GameObject[] bondPoints = new GameObject[4];
+	//public int bondsRemain;
+	public bool hasOpenBonds = true;
+	public bool hasBond = false;
+
+	void Start() {
+
+	}
+
+	void Update() {
+
+	}
+
+	/*public Carbon(string e, int oB, int bP) {
+		elemType = e;
+		openBonds = oB;
+		bondPoints = new float[bP];
+
+	}*/
+
+
+	public int getBondsRemain() {
+		return openBonds;
+	}
+
+	public string getElement() {
+		return elemType;
+	}
+
+	public bool areOpenBonds() {
+		if (getBondsRemain() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public bool isBond() {
+		if (getBondsRemain () < 4) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	public void showBondPoints() {
+		int i = 0;
+		while (i <= getBondsRemain()) {
+
+		}
+	}
+}
