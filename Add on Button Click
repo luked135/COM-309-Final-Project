@@ -1,0 +1,51 @@
+using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
+
+//This code is based on code from https://answers.unity.com/questions/373818/how-to-detect-mouse-click-on-a-gameobject.html
+
+public class CreateObject : MonoBehaviour
+{
+    // the Equip prefab - required for instantiation
+    public GameObject equipPrefab;
+
+    // list that holds all created objects - deleate all instances if desired
+    public List<GameObject> createdObjects = new List<GameObject>();
+
+    private float minX, maxX, minY, maxY;
+
+    private float spaceBetween = 0;
+
+    //Stuff in Start method is not usable in the current build 
+    void Start()
+    {
+        /*
+        float camDistance = Vector3.Distance(transform.position, Camera.main.transform.position);
+        Vector2 bottomCorner = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, camDistance));
+        Vector2 topCorner = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, camDistance));
+
+        minX = bottomCorner.x;
+        maxX = topCorner.x;
+        minY = bottomCorner.y;
+        maxY = topCorner.y;
+        */
+    }
+
+    public void Create()
+    {
+        // a prefab is need to perform the instantiation
+        if (equipPrefab != null)
+        {
+            // get a random postion to instantiate the prefab - you can change this to be created at a fied point if desired
+            //Vector3 position = new Vector3(Random.Range(minX + 0.5f, maxX - 0.5f), Random.Range(minY + 0.5f, maxY - 0.5f), 0);
+            Vector3 position = new Vector3(0 + spaceBetween, 2, 0);
+
+            // instantiate the object
+            GameObject go = (GameObject)Instantiate(equipPrefab, position, Quaternion.identity);
+            createdObjects.Add(go);
+
+            spaceBetween++;
+        }
+    }
+}
