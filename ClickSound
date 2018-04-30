@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-	[RequireComponent(typeof(Button))]
+[RequireComponent(typeof(Button))]
 public class ClickSound : MonoBehaviour {
-	
+
 	// Use this for initialization
 	public AudioClip sound;
 	private Button button { get { return GetComponent<Button> (); } }
@@ -17,6 +17,8 @@ public class ClickSound : MonoBehaviour {
 		button.onClick.AddListener(()=> PlaySound());
 	}
 	void PlaySound() {
+		//stops the sound from playing over itself
+		source.Stop();
 		source.PlayOneShot (sound);
 	}
 }
